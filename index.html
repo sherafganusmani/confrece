@@ -6,6 +6,7 @@
 <title>Conference Registration</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH9Wf9BfVvQ3vD6Gk+qFjGRo+y1Gj0V3kD1/h3Uu3J2DhcO3tL1xJtZxCJc1o3TzT5RmPqI0xwLh7v5hx8J0jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   body{
@@ -126,15 +127,45 @@
   }
 
   .schedule-item{
+      display:flex;
+      align-items:center;
+      gap:15px;
       background:#f0f4ff;
       padding:12px 15px;
       border-radius:12px;
-      margin-bottom:10px;
-      box-shadow:0 5px 10px rgba(0,0,0,0.05);
+      margin-bottom:12px;
+      box-shadow:0 5px 12px rgba(0,0,0,0.08);
+      transition:0.3s;
   }
 
-  .schedule-item p{
+  .schedule-item:hover{
+      transform: translateY(-3px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .schedule-time{
+      background:#0b6efd;
+      color:#fff;
+      font-weight:600;
+      padding:6px 12px;
+      border-radius:8px;
+      min-width:95px;
+      text-align:center;
+  }
+
+  .schedule-info{
+      flex:1;
+  }
+
+  .schedule-info p{
       margin:3px 0;
+  }
+
+  .schedule-icon{
+      font-size:20px;
+      color:#0b6efd;
+      min-width:30px;
+      text-align:center;
   }
 
 </style>
@@ -182,24 +213,44 @@
     <h3 style="margin-top:20px;">Schedule</h3>
     <div class="schedule">
       <div class="schedule-item">
-        <p><strong>09:00 AM - 10:00 AM:</strong> Opening Ceremony</p>
-        <p>Speaker: Dr. Robert Wilson</p>
+        <div class="schedule-icon"><i class="fa-solid fa-landmark"></i></div>
+        <div class="schedule-time">09:00 - 10:00</div>
+        <div class="schedule-info">
+          <p><strong>Opening Ceremony</strong></p>
+          <p>Speaker: Dr. Robert Wilson</p>
+        </div>
       </div>
       <div class="schedule-item">
-        <p><strong>10:15 AM - 11:00 AM:</strong> Smart Energy & Grid Optimization</p>
-        <p>Speaker: Dr. Priya Sharma</p>
+        <div class="schedule-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="schedule-time">10:15 - 11:00</div>
+        <div class="schedule-info">
+          <p><strong>Smart Energy & Grid Optimization</strong></p>
+          <p>Speaker: Dr. Priya Sharma</p>
+        </div>
       </div>
       <div class="schedule-item">
-        <p><strong>11:15 AM - 12:00 PM:</strong> AI in Environmental Monitoring</p>
-        <p>Speaker: Prof. Kenji Nakamura</p>
+        <div class="schedule-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="schedule-time">11:15 - 12:00</div>
+        <div class="schedule-info">
+          <p><strong>AI in Environmental Monitoring</strong></p>
+          <p>Speaker: Prof. Kenji Nakamura</p>
+        </div>
       </div>
       <div class="schedule-item">
-        <p><strong>01:00 PM - 02:00 PM:</strong> IoT-Driven Smart Cities</p>
-        <p>Speaker: Dr. Robert Wilson</p>
+        <div class="schedule-icon"><i class="fa-solid fa-city"></i></div>
+        <div class="schedule-time">01:00 - 02:00</div>
+        <div class="schedule-info">
+          <p><strong>IoT-Driven Smart Cities</strong></p>
+          <p>Speaker: Dr. Robert Wilson</p>
+        </div>
       </div>
       <div class="schedule-item">
-        <p><strong>02:15 PM - 03:00 PM:</strong> Smart Agriculture & Water Systems</p>
-        <p>Speaker: Dr. Priya Sharma</p>
+        <div class="schedule-icon"><i class="fa-solid fa-seedling"></i></div>
+        <div class="schedule-time">02:15 - 03:00</div>
+        <div class="schedule-info">
+          <p><strong>Smart Agriculture & Water Systems</strong></p>
+          <p>Speaker: Dr. Priya Sharma</p>
+        </div>
       </div>
     </div>
 
