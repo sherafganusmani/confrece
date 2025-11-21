@@ -6,167 +6,176 @@
 <title>Conference Registration</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH9Wf9BfVvQ3vD6Gk+qFjGRo+y1Gj0V3kD1/h3Uu3J2DhcO3tL1xJtZxCJc1o3TzT5RmPqI0xwLh7v5hx8J0jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-  body{
-      margin:0;
-      font-family:Poppins, sans-serif;
-      background:#f2f5fa;
-      color:#1a1f36;
-  }
+body{
+    margin:0;
+    font-family:Poppins, sans-serif;
+    background:#f2f5fa;
+    color:#1a1f36;
+}
 
-  header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-      background:linear-gradient(135deg,#0b6efd,#4f46e5);
-      color:#fff;
-      flex-wrap:wrap;
-  }
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:linear-gradient(135deg,#0b6efd,#4f46e5);
+    color:#fff;
+    flex-wrap:wrap;
+}
 
-  header h1{
-      font-size:24px;
-      margin:0;
-      font-weight:600;
-  }
+header h1{
+    font-size:24px;
+    margin:0;
+    font-weight:600;
+}
 
-  header img{
-      height:60px;
-      width:auto;
-  }
+header img{
+    height:60px;
+    width:auto;
+}
 
-  .container{
-      max-width:1100px;
-      margin:30px auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
-  }
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
 
-  @media(max-width:900px){
-      .container{
-          grid-template-columns:1fr;
-      }
-  }
+@media(max-width:900px){
+    .container{
+        grid-template-columns:1fr;
+    }
+}
 
-  .card{
-      background:#fff;
-      padding:30px;
-      border-radius:18px;
-      box-shadow:0 10px 30px rgba(0,0,0,.08);
-  }
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
 
-  h2{
-      margin-top:0;
-      color:#0b6efd;
-  }
+h2{
+    margin-top:0;
+    color:#0b6efd;
+}
 
-  label{
-      font-weight:600;
-      margin-top:12px;
-      display:block;
-  }
+label{
+    font-weight:600;
+    margin-top:12px;
+    display:block;
+}
 
-  input,select{
-      width:100%;
-      padding:12px;
-      border:1px solid #ccd3e0;
-      border-radius:10px;
-      font-size:15px;
-      margin-bottom:18px;
-  }
+input,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccd3e0;
+    border-radius:10px;
+    font-size:15px;
+    margin-bottom:18px;
+}
 
-  button{
-      background:#0b6efd;
-      border:0;
-      color:#fff;
-      padding:14px 22px;
-      font-size:16px;
-      border-radius:10px;
-      cursor:pointer;
-      transition:0.2s;
-  }
+button{
+    background:#0b6efd;
+    border:0;
+    color:#fff;
+    padding:14px 22px;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
 
-  button:hover{background:#084dbf}
+button:hover{background:#084dbf}
 
-  .event-details p{
-      margin:8px 0;
-  }
+.event-details p{
+    margin:8px 0;
+}
 
-  .countdown{
-      display:flex;
-      gap:12px;
-      margin-top:12px;
-      font-weight:600;
-      color:#0b6efd;
-  }
+.countdown{
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+    font-weight:600;
+    color:#0b6efd;
+}
 
-  .speakers{
-      margin-top:15px;
-  }
+.speakers{
+    margin-top:15px;
+}
 
-  .speaker{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-top:10px;
-  }
+.speaker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
 
-  .speaker img{
-      width:50px;
-      height:50px;
-      border-radius:10px;
-      object-fit:cover;
-  }
+.speaker img{
+    width:50px;
+    height:50px;
+    border-radius:10px;
+    object-fit:cover;
+}
 
-  /* Schedule styles */
-  .schedule{
-      margin-top:25px;
-  }
+/* Schedule card */
+.schedule-card{
+    max-width:1100px;
+    margin:30px auto;
+    padding:30px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
 
-  .schedule-item{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      background:#f0f4ff;
-      padding:12px 15px;
-      border-radius:12px;
-      margin-bottom:12px;
-      box-shadow:0 5px 12px rgba(0,0,0,0.08);
-      transition:0.3s;
-  }
+.schedule{
+    margin-top:15px;
+}
 
-  .schedule-item:hover{
-      transform: translateY(-3px);
-      box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  }
+.schedule-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#f0f4ff;
+    padding:12px 15px;
+    border-radius:12px;
+    margin-bottom:12px;
+    box-shadow:0 5px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
 
-  .schedule-time{
-      background:#0b6efd;
-      color:#fff;
-      font-weight:600;
-      padding:6px 12px;
-      border-radius:8px;
-      min-width:95px;
-      text-align:center;
-  }
+.schedule-item:hover{
+    transform: translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
 
-  .schedule-info{
-      flex:1;
-  }
+.schedule-time{
+    background:#0b6efd;
+    color:#fff;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:8px;
+    min-width:95px;
+    text-align:center;
+}
 
-  .schedule-info p{
-      margin:3px 0;
-  }
+.schedule-info{
+    flex:1;
+}
 
-  .schedule-icon{
-      font-size:20px;
-      color:#0b6efd;
-      min-width:30px;
-      text-align:center;
-  }
+.schedule-info p{
+    margin:3px 0;
+}
+
+.schedule-icon{
+    font-size:20px;
+    color:#0b6efd;
+    min-width:30px;
+    text-align:center;
+}
 
 </style>
 </head>
@@ -174,7 +183,7 @@
 <body>
 
 <header>
-  <h1>Conference</h1>
+  <h1>International Conference</h1>
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="Logo">
 </header>
 
@@ -209,51 +218,6 @@
         <span>Prof. Kenji Nakamura</span>
       </div>
     </div>
-
-    <h3 style="margin-top:20px;">Schedule</h3>
-    <div class="schedule">
-      <div class="schedule-item">
-        <div class="schedule-icon"><i class="fa-solid fa-landmark"></i></div>
-        <div class="schedule-time">09:00 - 10:00</div>
-        <div class="schedule-info">
-          <p><strong>Opening Ceremony</strong></p>
-          <p>Speaker: Dr. Robert Wilson</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-icon"><i class="fa-solid fa-bolt"></i></div>
-        <div class="schedule-time">10:15 - 11:00</div>
-        <div class="schedule-info">
-          <p><strong>Smart Energy & Grid Optimization</strong></p>
-          <p>Speaker: Dr. Priya Sharma</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-icon"><i class="fa-solid fa-robot"></i></div>
-        <div class="schedule-time">11:15 - 12:00</div>
-        <div class="schedule-info">
-          <p><strong>AI in Environmental Monitoring</strong></p>
-          <p>Speaker: Prof. Kenji Nakamura</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-icon"><i class="fa-solid fa-city"></i></div>
-        <div class="schedule-time">01:00 - 02:00</div>
-        <div class="schedule-info">
-          <p><strong>IoT-Driven Smart Cities</strong></p>
-          <p>Speaker: Dr. Robert Wilson</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-icon"><i class="fa-solid fa-seedling"></i></div>
-        <div class="schedule-time">02:15 - 03:00</div>
-        <div class="schedule-info">
-          <p><strong>Smart Agriculture & Water Systems</strong></p>
-          <p>Speaker: Dr. Priya Sharma</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- Right: Registration Form -->
@@ -284,6 +248,53 @@
     </form>
   </div>
 
+</div>
+
+<!-- Schedule Card -->
+<div class="schedule-card">
+  <h2>Schedule</h2>
+  <div class="schedule">
+    <div class="schedule-item">
+      <div class="schedule-icon"><i class="fa-solid fa-landmark"></i></div>
+      <div class="schedule-time">09:00 - 10:00</div>
+      <div class="schedule-info">
+        <p><strong>Opening Ceremony</strong></p>
+        <p>Speaker: Dr. Robert Wilson</p>
+      </div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-icon"><i class="fa-solid fa-bolt"></i></div>
+      <div class="schedule-time">10:15 - 11:00</div>
+      <div class="schedule-info">
+        <p><strong>Smart Energy & Grid Optimization</strong></p>
+        <p>Speaker: Dr. Priya Sharma</p>
+      </div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-icon"><i class="fa-solid fa-robot"></i></div>
+      <div class="schedule-time">11:15 - 12:00</div>
+      <div class="schedule-info">
+        <p><strong>AI in Environmental Monitoring</strong></p>
+        <p>Speaker: Prof. Kenji Nakamura</p>
+      </div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-icon"><i class="fa-solid fa-city"></i></div>
+      <div class="schedule-time">01:00 - 02:00</div>
+      <div class="schedule-info">
+        <p><strong>IoT-Driven Smart Cities</strong></p>
+        <p>Speaker: Dr. Robert Wilson</p>
+      </div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-icon"><i class="fa-solid fa-seedling"></i></div>
+      <div class="schedule-time">02:15 - 03:00</div>
+      <div class="schedule-info">
+        <p><strong>Smart Agriculture & Water Systems</strong></p>
+        <p>Speaker: Dr. Priya Sharma</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
