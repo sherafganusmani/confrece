@@ -69,32 +69,6 @@
         transition:.2s;
     }
     button:hover{background:#084dbf}
-    .success{
-        background:#d1fae5;
-        padding:15px;
-        border-radius:10px;
-        color:#065f46;
-        margin-bottom:20px;
-        font-weight:500;
-        display:none;
-    }
-    .error{
-        background:#fee2e2;
-        padding:15px;
-        border-radius:10px;
-        color:#7f1d1d;
-        margin-bottom:20px;
-        font-weight:500;
-        display:none;
-    }
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-    @media(max-width:780px){.grid-2{grid-template-columns:1fr}}
-    .hero-box{
-        background:#fff;border-radius:18px;padding:30px;
-        box-shadow:0 10px 25px rgba(0,0,0,.08);
-    }
-    .hero-box h2{margin-top:0;font-size:28px;font-weight:600;color:#0b6efd}
-    .hero-box p{font-size:16px;line-height:1.6;color:#555}
     footer{
         text-align:center;padding:20px;margin-top:30px;color:#6b7280;font-size:14px
     }
@@ -110,51 +84,32 @@
 
 <div class="container">
 
-    <div class="grid-2">
+    <div class="card">
+        <h2 class="section-title">Register Now</h2>
 
-        <div class="hero-box">
-            <h2>About the Conference</h2>
-            <p>This global conference brings together leading researchers, innovators, and professionals to explore cutting-edge smart technologies that support sustainable development.</p>
+        <form id="regForm">
+            <label>Full Name</label>
+            <input id="name" type="text" name="name" required>
 
-            <h3 style="margin-top:25px">Topics / Tracks</h3>
-            <ul>
-                <li>Smart Energy & Grid Optimization</li>
-                <li>AI in Environmental Monitoring</li>
-                <li>IoT-Driven Smart Cities</li>
-                <li>Smart Agriculture & Water Systems</li>
-                <li>Ethics, Sustainability & Policy</li>
-            </ul>
-        </div>
+            <label>Email</label>
+            <input id="email" type="email" name="email" required>
 
-        <div class="card">
-            <h2 class="section-title">Register Now</h2>
+            <label>Affiliation</label>
+            <input id="affiliation" type="text" name="affiliation">
 
-            <div class="success" id="successMessage">Thank you! Your registration has been submitted.</div>
-            <div class="error" id="errorMessage">There was an error. Please try again.</div>
+            <label>Country</label>
+            <input id="country" type="text" name="country">
 
-            <form id="regForm">
-                <label>Full Name</label>
-                <input type="text" name="name" required>
+            <label>Ticket Type</label>
+            <select id="ticket" name="ticket">
+                <option>Standard</option>
+                <option>Student</option>
+                <option>Virtual</option>
+            </select>
 
-                <label>Email</label>
-                <input type="email" name="email" required>
+            <button type="submit">Submit Registration</button>
+        </form>
 
-                <label>Affiliation</label>
-                <input type="text" name="affiliation">
-
-                <label>Country</label>
-                <input type="text" name="country">
-
-                <label>Ticket Type</label>
-                <select name="ticket">
-                    <option>Standard</option>
-                    <option>Student</option>
-                    <option>Virtual</option>
-                </select>
-
-                <button type="submit">Submit Registration</button>
-            </form>
-        </div>
     </div>
 </div>
 
@@ -165,49 +120,38 @@
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbxrtPPzx5zUZEpmFyo3e5RFrWEBxND3jgBGRWwOGUFrYJdnvI3L51paspsDTC24qWX2/exec";    
-
+const scriptURL = "https://script.google.com/macros/s/AKfycbxrtPPzx5zUZEpmFyo3e5RFrWEBxND3jgBGRWwOGUFrYJdnvI3L51paspsDTC24qWX2/exec";
 const form = document.getElementById("regForm");
-const successMsg = document.getElementById("successMessage");
-const errorMsg = document.getElementById("errorMessage");
 
 form.addEventListener("submit", e => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
+  fetch(scriptURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      affiliation: document.getElementById("affiliation").value,
+      country: document.getElementById("country").value,
+      ticket: document.getElementById("ticket").value
     })
-    .then(res => res.text())
-    .then(res => {
-
-        // 🔍 DEBUG ALERT — shows Google's exact response
-        alert("Response from Google Script:\n\n" + res);
-
-        if (res.includes("Success")) {
-            successMsg.style.display = "block";
-            errorMsg.style.display = "none";
-            form.reset();
-        } else {
-            errorMsg.style.display = "block";
-        }
-    })
-    .catch(err => {
-
-        // 🔍 DEBUG ALERT for fetch errors
-        alert("Fetch Error:\n\n" + err);
-
-        errorMsg.style.display = "block";
-    });
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("Submitted successfully!");
+    form.reset();
+  })
+  .catch(err => {
+    console.error(err);
+    alert("There was an error. Please try again.");
+  });
 });
 </script>
 
 </body>
 </html>
+
 
 
 
