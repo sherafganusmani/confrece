@@ -97,10 +97,30 @@ button:hover{background:#084dbf}
 
 .countdown{
     display:flex;
-    gap:12px;
-    margin-top:12px;
-    font-weight:600;
-    color:#0b6efd;
+    gap:15px;
+    margin-top:15px;
+}
+
+.time-box{
+    background:#0b6efd;
+    color:#fff;
+    padding:15px 20px;
+    border-radius:12px;
+    text-align:center;
+    min-width:75px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.2s;
+}
+
+.time-box span{
+    display:block;
+    font-size:24px;
+    font-weight:700;
+}
+
+.time-box small{
+    font-size:12px;
+    opacity:0.8;
 }
 
 .speakers{
@@ -176,7 +196,6 @@ button:hover{background:#084dbf}
     min-width:30px;
     text-align:center;
 }
-
 </style>
 </head>
 
@@ -197,10 +216,22 @@ button:hover{background:#084dbf}
     <p><strong>Place:</strong> New Delhi, India (Hybrid Event)</p>
 
     <div class="countdown">
-      <div><span id="days">--</span> Days</div>
-      <div><span id="hours">--</span> Hours</div>
-      <div><span id="minutes">--</span> Minutes</div>
-      <div><span id="seconds">--</span> Seconds</div>
+      <div class="time-box">
+        <span id="days">--</span>
+        <small>Days</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">--</span>
+        <small>Hours</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">--</span>
+        <small>Minutes</small>
+      </div>
+      <div class="time-box">
+        <span id="seconds">--</span>
+        <small>Seconds</small>
+      </div>
     </div>
 
     <h3 style="margin-top:20px;">Keynote Speakers</h3>
@@ -324,7 +355,7 @@ form.addEventListener("submit", e => {
   });
 });
 
-// Countdown timer
+// Professional countdown timer
 const eventDate = new Date("2026-04-22T09:00:00").getTime();
 function updateCountdown(){
   const now = new Date().getTime();
