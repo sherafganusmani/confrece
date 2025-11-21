@@ -8,95 +8,197 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body{
-        margin:0;
-        background:#f2f5fa;
-        font-family:Poppins, sans-serif;
-        color:#1a1f36;
-    }
-    header{
-        background:linear-gradient(135deg,#0b6efd,#4f46e5);
-        padding:60px 20px;
-        color:#fff;
-        text-align:center;
-    }
-    .container{
-        max-width:1100px;
-        margin:auto;
-        padding:30px;
-    }
-    .card{
-        background:#fff;
-        padding:30px;
-        border-radius:18px;
-        box-shadow:0 10px 30px rgba(0,0,0,.08);
-    }
-    label{font-weight:600;margin-top:12px;display:block}
-    input,select{
-        width:100%;
-        padding:12px;
-        border:1px solid #ccd3e0;
-        border-radius:10px;
-        font-size:15px;
-        margin-bottom:18px;
-    }
-    button{
-        background:#0b6efd;
-        border:0;
-        color:#fff;
-        padding:14px 22px;
-        font-size:16px;
-        border-radius:10px;
-        cursor:pointer;
-    }
-    button:hover{background:#084dbf}
+  body{
+      margin:0;
+      font-family:Poppins, sans-serif;
+      background:#f2f5fa;
+      color:#1a1f36;
+  }
+
+  header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:linear-gradient(135deg,#0b6efd,#4f46e5);
+      color:#fff;
+      flex-wrap:wrap;
+  }
+
+  header h1{
+      font-size:24px;
+      margin:0;
+      font-weight:600;
+  }
+
+  header img{
+      height:60px;
+      width:auto;
+  }
+
+  .container{
+      max-width:1100px;
+      margin:30px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+  }
+
+  @media(max-width:900px){
+      .container{
+          grid-template-columns:1fr;
+      }
+  }
+
+  .card{
+      background:#fff;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+
+  h2{
+      margin-top:0;
+      color:#0b6efd;
+  }
+
+  label{
+      font-weight:600;
+      margin-top:12px;
+      display:block;
+  }
+
+  input,select{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccd3e0;
+      border-radius:10px;
+      font-size:15px;
+      margin-bottom:18px;
+  }
+
+  button{
+      background:#0b6efd;
+      border:0;
+      color:#fff;
+      padding:14px 22px;
+      font-size:16px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:0.2s;
+  }
+
+  button:hover{background:#084dbf}
+
+  .event-details p{
+      margin:8px 0;
+  }
+
+  .countdown{
+      display:flex;
+      gap:12px;
+      margin-top:12px;
+      font-weight:600;
+      color:#0b6efd;
+  }
+
+  .speakers{
+      margin-top:15px;
+  }
+
+  .speaker{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:10px;
+  }
+
+  .speaker img{
+      width:50px;
+      height:50px;
+      border-radius:10px;
+      object-fit:cover;
+  }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>International Conference on Smart Systems for Sustainable Development</h1>
+  <h1>Conference</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="Logo">
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <h2>Register Now</h2>
+  <!-- Left: Event Details -->
+  <div class="card event-details">
+    <h2>Event Details</h2>
+    <p><strong>Name:</strong> International Conference on Smart Systems for Sustainable Development</p>
+    <p><strong>Date:</strong> April 22–24, 2026</p>
+    <p><strong>Place:</strong> New Delhi, India (Hybrid Event)</p>
 
-        <form id="regForm">
-            <label>Full Name</label>
-            <input id="name" name="name" required>
-
-            <label>Email</label>
-            <input id="email" type="email" name="email" required>
-
-            <label>Affiliation</label>
-            <input id="affiliation" name="affiliation">
-
-            <label>Country</label>
-            <input id="country" name="country">
-
-            <label>Ticket Type</label>
-            <select id="ticket" name="ticket">
-                <option>Standard</option>
-                <option>Student</option>
-                <option>Virtual</option>
-            </select>
-
-            <button type="submit">Submit Registration</button>
-        </form>
-
+    <div class="countdown">
+      <div><span id="days">--</span> Days</div>
+      <div><span id="hours">--</span> Hours</div>
+      <div><span id="minutes">--</span> Minutes</div>
+      <div><span id="seconds">--</span> Seconds</div>
     </div>
+
+    <h3 style="margin-top:20px;">Keynote Speakers</h3>
+    <div class="speakers">
+      <div class="speaker">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+        <span>Dr. Robert Wilson</span>
+      </div>
+      <div class="speaker">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
+        <span>Dr. Priya Sharma</span>
+      </div>
+      <div class="speaker">
+        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="">
+        <span>Prof. Kenji Nakamura</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Registration Form -->
+  <div class="card">
+    <h2>Register Now</h2>
+
+    <form id="regForm">
+        <label>Full Name</label>
+        <input id="name" name="name" required>
+
+        <label>Email</label>
+        <input id="email" type="email" name="email" required>
+
+        <label>Affiliation</label>
+        <input id="affiliation" name="affiliation">
+
+        <label>Country</label>
+        <input id="country" name="country">
+
+        <label>Ticket Type</label>
+        <select id="ticket" name="ticket">
+            <option>Standard</option>
+            <option>Student</option>
+            <option>Virtual</option>
+        </select>
+
+        <button type="submit">Submit Registration</button>
+    </form>
+  </div>
+
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbxrtPPzx5zUZEpmFyo3e5RFrWEBxND3jgBGRWwOGUFrYJdnvI3L51paspsDTC24qWX2/exec";  // replace with your deployed URL
-const form = document.getElementById("regForm");
+const scriptURL = "https://script.google.com/macros/s/AKfycbxrtPPzx5zUZEpmFyo3e5RFrWEBxND3jgBGRWwOGUFrYJdnvI3L51paspsDTC24qWX2/exec";  
 
+const form = document.getElementById("regForm");
 form.addEventListener("submit", e => {
   e.preventDefault();
-
   let formData = new FormData(form);
 
   fetch(scriptURL, {
@@ -117,9 +219,26 @@ form.addEventListener("submit", e => {
     alert("Network error — please try again.");
   });
 });
+
+// Countdown timer
+const eventDate = new Date("2026-04-22T09:00:00").getTime();
+function updateCountdown(){
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 </body>
 </html>
-
-
