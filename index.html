@@ -124,19 +124,13 @@ const form = document.getElementById("regForm");
 form.addEventListener("submit", e => {
   e.preventDefault();
 
+  const formData = new FormData(form);
+
   fetch(scriptURL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      affiliation: document.getElementById("affiliation").value,
-      country: document.getElementById("country").value,
-      ticket: document.getElementById("ticket").value
-    })
+    body: formData
   })
-  .then(res => res.json())
-  .then(data => {
+  .then(res => {
     alert("Submitted successfully!");
     form.reset();
   })
@@ -149,8 +143,10 @@ form.addEventListener("submit", e => {
 
 
 
+
 </body>
 </html>
+
 
 
 
