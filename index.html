@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>International Conference | Smart Systems for Sustainable Development</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        margin:0;
+        background:#f2f5fa;
+        font-family:Poppins, sans-serif;
+        color:#1a1f36;
+    }
+    header{
+        background:linear-gradient(135deg,#0b6efd,#4f46e5);
+        padding:60px 20px;
+        color:#fff;
+        text-align:center;
+    }
+    header h1{
+        font-size:38px;
+        margin:10px 0 0;
+        font-weight:700;
+    }
+    header p{
+        margin-top:10px;
+        font-size:18px;
+        opacity:.9;
+    }
+    .container{
+        max-width:1100px;
+        margin:auto;
+        padding:30px;
+    }
+    .section-title{
+        font-size:26px;
+        margin-bottom:20px;
+        font-weight:600;
+        color:#0b6efd;
+    }
+    .card{
+        background:#fff;
+        padding:30px;
+        border-radius:18px;
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+        margin-bottom:25px;
+    }
+    label{font-weight:500;margin-bottom:6px;display:block}
+    input,select{
+        width:100%;
+        padding:12px;
+        border:1px solid #ccd3e0;
+        border-radius:10px;
+        font-size:15px;
+        margin-bottom:18px;
+    }
+    button{
+        background:#0b6efd;
+        border:0;
+        color:#fff;
+        padding:14px 22px;
+        font-size:16px;
+        font-weight:600;
+        border-radius:10px;
+        cursor:pointer;
+        transition:.2s;
+    }
+    button:hover{background:#084dbf}
+    .success{
+        background:#d1fae5;
+        padding:15px;
+        border-radius:10px;
+        color:#065f46;
+        margin-bottom:20px;
+        font-weight:500;
+        display:none;
+    }
+    .error{
+        background:#fee2e2;
+        padding:15px;
+        border-radius:10px;
+        color:#7f1d1d;
+        margin-bottom:20px;
+        font-weight:500;
+        display:none;
+    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+    @media(max-width:780px){.grid-2{grid-template-columns:1fr}}
+    .hero-box{
+        background:#fff;border-radius:18px;padding:30px;
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    .hero-box h2{margin-top:0;font-size:28px;font-weight:600;color:#0b6efd}
+    .hero-box p{font-size:16px;line-height:1.6;color:#555}
+    footer{
+        text-align:center;padding:20px;margin-top:30px;color:#6b7280;font-size:14px
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>International Conference on Smart Systems<br>for Sustainable Development</h1>
+    <p>April 22–24, 2026 • New Delhi, India • Hybrid Event</p>
+</header>
+
+<div class="container">
+
+    <div class="grid-2">
+
+        <div class="hero-box">
+            <h2>About the Conference</h2>
+            <p>This global conference brings together leading researchers, innovators, and professionals to explore cutting-edge smart technologies that support sustainable development.</p>
+
+            <h3 style="margin-top:25px">Topics / Tracks</h3>
+            <ul>
+                <li>Smart Energy & Grid Optimization</li>
+                <li>AI in Environmental Monitoring</li>
+                <li>IoT-Driven Smart Cities</li>
+                <li>Smart Agriculture & Water Systems</li>
+                <li>Ethics, Sustainability & Policy</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Register Now</h2>
+
+            <div class="success" id="successMessage">Thank you! Your registration has been submitted.</div>
+            <div class="error" id="errorMessage">There was an error. Please try again.</div>
+
+            <form id="regForm">
+                <label>Full Name</label>
+                <input type="text" name="name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Affiliation</label>
+                <input type="text" name="affiliation">
+
+                <label>Country</label>
+                <input type="text" name="country">
+
+                <label>Ticket Type</label>
+                <select name="ticket">
+                    <option>Standard</option>
+                    <option>Student</option>
+                    <option>Virtual</option>
+                </select>
+
+                <button type="submit">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © <span id="year"></span> International Conference on Smart Systems for Sustainable Development
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbxx9_98PitBVWzzAsq-2Srp1-QVhRh6eCkaR2lL-tQbOLO0dEJStyG9f9wlpkQpJqTxrg/exec";
+
+const form = document.getElementById("regForm");
+const successMsg = document.getElementById("successMessage");
+const errorMsg = document.getElementById("errorMessage");
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.text())
+    .then(res => {
+
+        // 🔍 DEBUG ALERT — shows Google's exact response
+        alert("Response from Google Script:\n\n" + res);
+
+        if (res.includes("Success")) {
+            successMsg.style.display = "block";
+            errorMsg.style.display = "none";
+            form.reset();
+        } else {
+            errorMsg.style.display = "block";
+        }
+    })
+    .catch(err => {
+
+        // 🔍 DEBUG ALERT for fetch errors
+        alert("Fetch Error:\n\n" + err);
+
+        errorMsg.style.display = "block";
+    });
+});
+</script>
+
+</body>
+</html>
